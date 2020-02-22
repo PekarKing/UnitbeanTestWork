@@ -1,7 +1,8 @@
-package com.android.unitbeantestwork
+package com.android.unitbeantestwork.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.android.unitbeantestwork.R
 
 class MainActivity : AppCompatActivity() {
 

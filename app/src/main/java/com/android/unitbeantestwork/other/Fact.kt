@@ -2,67 +2,75 @@ package com.android.unitbeantestwork.other
 
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
-import java.sql.Timestamp
 
-class Fact(_id: String, _v: Int, user: String, text: String, updatedAt: Timestamp, sendDate: Timestamp,
-           deleted: Boolean, source: String, used: Boolean, type: String) {
+class Fact(_id: String, user: User, text: String, /*createdAt: String?,*/ upVotes: Int) {
+
+    @SerializedName("_id")
+    @Expose
+    var id = _id
+        get() = field
+        set(value) {
+            field = value
+        }
+
+    @SerializedName("text")
+    @Expose
+    var text = text
+        get() = field
+        set(value) {
+            field = value
+        }
+
+//    @SerializedName("createdAt")
+//    @Expose
+//    var createdAt = createdAt
+////    var createdAt = "11.12.2020 16:00"
+//        get() = field
+//        set(value) {
+//            field = value
+//        }
+
+    @SerializedName("upvotes")
+    @Expose
+    var upVotes = upVotes
+        get() = field
+        set(value) {
+            field = value
+        }
+
+    @SerializedName("user")
+    @Expose
+    var user = user
+        get() = field
+        set(value) {
+            field = value
+        }
+}
+
+class User(_id: String, name: Name) {
     @SerializedName("_id")
     @Expose
     var id = _id
         get() = field
         set(value) { field = value }
 
-    @SerializedName("_v")
+    @SerializedName("name")
     @Expose
-    var v = _v
+    var name = name
+        get() = field
+        set(value) { field = value }
+}
+
+class Name(first: String, last: String) {
+    @SerializedName("first")
+    @Expose
+    var first = first
         get() = field
         set(value) { field = value }
 
-    @SerializedName("user")
+    @SerializedName("last")
     @Expose
-    var user = user
-        get() = field
-        set(value) { field = value }
-
-    @SerializedName("text")
-    @Expose
-    var text = text
-        get() = field
-        set(value) { field = value }
-
-    @SerializedName("updatedAt")
-    @Expose
-    var updatedAt = updatedAt
-        get() = field
-        set(value) { field = value }
-
-    @SerializedName("sendDate")
-    @Expose
-    var sendDate = sendDate
-        get() = field
-        set(value) { field = value }
-
-    @SerializedName("deleted")
-    @Expose
-    var deleted = deleted
-        get() = field
-        set(value) { field = value }
-
-    @SerializedName("source")
-    @Expose
-    var source = source
-        get() = field
-        set(value) { field = value }
-
-    @SerializedName("used")
-    @Expose
-    var used = used
-        get() = field
-        set(value) { field = value }
-
-    @SerializedName("type")
-    @Expose
-    var type = type
+    var last = last
         get() = field
         set(value) { field = value }
 }

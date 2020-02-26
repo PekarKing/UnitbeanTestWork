@@ -1,6 +1,7 @@
 package com.android.unitbeantestwork.activities
 
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.android.unitbeantestwork.Contract
 import com.android.unitbeantestwork.R
@@ -16,15 +17,18 @@ class DetailActivity : AppCompatActivity(), Contract.DetailView {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail)
         val array = intent.getStringArrayListExtra("fact")
-        mDetailPresenter.load(Fact().toFactFromArray(array))
+        iProgressBar.visibility = View.VISIBLE
+        mDetailPresenter.load(Fact().toFactFromArray(array!!))
     }
 
     override fun show(fact: Fact){
         val name = "${fact.user.name.first} ${fact.user.name.last}"
+        val body = "    ${fact.text}"
         detail_user.text = name
+        detail_body.text = body
         detail_date.text = fact.createdAt
-        detail_body.text = fact.text
         detail_votes.text = fact.upVotes.toString()
         supportActionBar?.title = fact.factNumber
+        iProgressBar.visibility = View.GONE
     }
 }

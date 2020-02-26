@@ -29,10 +29,11 @@ class FactAdapter(private val facts: ArrayList<Fact>, private val mView: Contrac
         val name = "${facts[position].user.name.first} ${facts[position].user.name.last}"
         holder.name.text = name
         holder.votes.text = facts[position].upVotes.toString()
-        holder.body.text = facts[position].text
+        holder.body.text = when(facts[position].text.length > 190){
+            true -> "   ${facts[position].text.substring(0, 190)}..."
+            false -> "  ${facts[position].text}"
+        }
         holder.title.text = facts[position].factNumber
-//        holder.date.text = facts[position].createdAt
-
         holder.item.setOnClickListener {
             mView.showDetail(facts[position])
         }

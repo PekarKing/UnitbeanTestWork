@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:importantForAutofill="noExcludeDescendants"
     tools:context=".activities.DetailActivity">
 
     <TextView
@@ -15,10 +16,8 @@
         android:layout_marginTop="24dp"
         android:layout_marginEnd="18dp"
         android:layout_marginRight="18dp"
-        android:text="User"
         android:textColor="@color/colorPrimary"
         android:textSize="18sp"
-        android:textStyle="italic"
         app:layout_constraintEnd_toStartOf="@+id/imageView2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -29,7 +28,6 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="18dp"
         android:layout_marginRight="18dp"
-        android:text="9"
         android:textColor="#009B00"
         android:textSize="18sp"
         android:textStyle="bold"
@@ -45,16 +43,16 @@
         app:layout_constraintBottom_toBottomOf="@+id/detail_user"
         app:layout_constraintEnd_toStartOf="@+id/detail_votes"
         app:layout_constraintTop_toTopOf="@+id/detail_user"
-        app:srcCompat="@drawable/ic_up_votes_24dp" />
+        app:srcCompat="@drawable/ic_up_votes_24dp"
+        tools:ignore="ContentDescription" />
 
     <TextView
         android:id="@+id/detail_body"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="Body"
         android:textColor="#000000"
-        android:textSize="14sp"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="@+id/detail_votes"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/detail_user"
@@ -65,7 +63,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="Date"
         android:textColor="#868686"
         android:textSize="12sp"
         app:layout_constraintStart_toStartOf="@+id/detail_user"
@@ -74,11 +71,23 @@
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="1dp"
         android:layout_marginTop="8dp"
         android:background="#868686"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/detail_date"></LinearLayout>
+        app:layout_constraintTop_toBottomOf="@+id/detail_date" />
+
+    <include
+        layout="@layout/progress_bar"
+        android:id="@+id/iProgressBar"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="#FFFFFF"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,8 +1,8 @@
 package com.android.unitbeantestwork.presenters
 
 import com.android.unitbeantestwork.Contract
+import com.android.unitbeantestwork.internet.FactList
 import com.android.unitbeantestwork.internet.Network
-import com.android.unitbeantestwork.internet.NetworkApi.FactList
 import com.android.unitbeantestwork.other.Fact
 import com.android.unitbeantestwork.other.FactAdapter
 import retrofit2.Call

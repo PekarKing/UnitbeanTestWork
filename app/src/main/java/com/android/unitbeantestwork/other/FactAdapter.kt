@@ -20,19 +20,21 @@ class FactAdapter(private val facts: ArrayList<Fact>, private val mView: Contrac
     override fun getItemCount() = facts.size
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.body.text = facts[position].text
-        val title = "CatFact №${position + 1}"
-        holder.title.text = title
+        facts[position].factNumber = "CatFact №${position + 1}"
         when(facts[position].upVotes > 0) {
-            true -> holder.votes.setTextColor(Color.parseColor("#8000FF00"))
-            false -> holder.votes.setTextColor(Color.parseColor("#CCFF0000"))
+            true -> holder.votes.setTextColor(Color.parseColor("#00aa00"))
+            false -> holder.votes.setTextColor(Color.parseColor("#dd0000"))
         }
-        holder.votes.text = facts[position].upVotes.toString()
+
         val name = "${facts[position].user.name.first} ${facts[position].user.name.last}"
         holder.name.text = name
+        holder.votes.text = facts[position].upVotes.toString()
+        holder.body.text = facts[position].text
+        holder.title.text = facts[position].factNumber
+//        holder.date.text = facts[position].createdAt
 
         holder.item.setOnClickListener {
-            mView.showDetail()
+            mView.showDetail(facts[position])
         }
     }
 
@@ -41,6 +43,7 @@ class FactAdapter(private val facts: ArrayList<Fact>, private val mView: Contrac
         val body: TextView = itemView.findViewById(R.id.list_body)
         val votes: TextView = itemView.findViewById(R.id.list_votes)
         val name: TextView = itemView.findViewById(R.id.list_name)
+//        val date: TextView = itemView.findViewById(R.id.list_date)
         val item: CardView = itemView.findViewById(R.id.factCardView)
     }
 }

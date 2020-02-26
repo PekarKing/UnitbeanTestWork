@@ -3,11 +3,17 @@ package com.android.unitbeantestwork.other
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
-class Fact(_id: String, user: User, text: String, /*createdAt: String?,*/ upVotes: Int) {
+class Fact {
 
     @SerializedName("_id")
     @Expose
-    var id = _id
+    var id = ""
+        get() = field
+        set(value) {
+            field = value
+        }
+
+    var factNumber = ""
         get() = field
         set(value) {
             field = value
@@ -15,24 +21,21 @@ class Fact(_id: String, user: User, text: String, /*createdAt: String?,*/ upVote
 
     @SerializedName("text")
     @Expose
-    var text = text
+    var text = ""
         get() = field
         set(value) {
             field = value
         }
 
-//    @SerializedName("createdAt")
-//    @Expose
-//    var createdAt = createdAt
-////    var createdAt = "11.12.2020 16:00"
-//        get() = field
-//        set(value) {
-//            field = value
-//        }
+    var createdAt = ""
+        get() = field
+        set(value) {
+            field = value
+        }
 
     @SerializedName("upvotes")
     @Expose
-    var upVotes = upVotes
+    var upVotes = 0
         get() = field
         set(value) {
             field = value
@@ -40,20 +43,38 @@ class Fact(_id: String, user: User, text: String, /*createdAt: String?,*/ upVote
 
     @SerializedName("user")
     @Expose
-    var user = user
+    var user = User(Name("", ""))
         get() = field
         set(value) {
             field = value
         }
+
+    fun toStringArrayList(): ArrayList<String> {
+        val array = ArrayList<String>()
+        array.add(id)
+        array.add(factNumber)
+        array.add(text)
+        array.add(createdAt)
+        array.add(upVotes.toString())
+        array.add(user.name.first)
+        array.add(user.name.last)
+        return array
+    }
+
+    fun toFactFromArray(array: ArrayList<String>): Fact {
+        val fact = Fact()
+        fact.id = array[0]
+        fact.factNumber = array[1]
+        fact.text = array[2]
+        fact.createdAt = array[3]
+        fact.upVotes = array[4].toInt()
+        fact.user.name.first = array[5]
+        fact.user.name.last = array[6]
+        return fact
+    }
 }
 
-class User(_id: String, name: Name) {
-    @SerializedName("_id")
-    @Expose
-    var id = _id
-        get() = field
-        set(value) { field = value }
-
+class User(name: Name) {
     @SerializedName("name")
     @Expose
     var name = name

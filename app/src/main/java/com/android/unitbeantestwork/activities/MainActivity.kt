@@ -1,5 +1,6 @@
 package com.android.unitbeantestwork.activities
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -14,6 +15,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 class MainActivity : AppCompatActivity(), Contract.MainView {
 
     private var mMainPresenter: Contract.MainPresenter = MainPresenter(this)
+    val context = this
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,4 +33,6 @@ class MainActivity : AppCompatActivity(), Contract.MainView {
         startActivity(intent)
         onPause()
     }
+
+    override fun getContext(): Context = context
 }

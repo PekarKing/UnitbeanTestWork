@@ -11,6 +11,18 @@
     <style name="AppTheme.NoActionBar" parent="AppTheme">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
+        <item name="android:textViewStyle">@style/SplashTextView</item>
+        <item name="android:background">@color/colorPrimary</item>
+    </style>
+
+    <style name="SplashTextView" parent="Widget.AppCompat.TextView">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:text">UnitBean</item>
+        <item name="android:textColor">#fff</item>
+        <item name="android:textSize">38sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:gravity">center</item>
     </style>
 
     <style name="GrayProgressBar" parent="AppTheme">

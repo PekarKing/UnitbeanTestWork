@@ -1,53 +1,24 @@
-package com.android.unitbeantestwork.other
+package com.android.unitbeantestwork.mvp.model
 
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
 class Fact {
-
     @SerializedName("_id")
     @Expose
     var id = ""
-        get() = field
-        set(value) {
-            field = value
-        }
-
-    var factNumber = ""
-        get() = field
-        set(value) {
-            field = value
-        }
-
     @SerializedName("text")
     @Expose
     var text = ""
-        get() = field
-        set(value) {
-            field = value
-        }
-
-    var createdAt = ""
-        get() = field
-        set(value) {
-            field = value
-        }
-
     @SerializedName("upvotes")
     @Expose
     var upVotes = 0
-        get() = field
-        set(value) {
-            field = value
-        }
-
     @SerializedName("user")
     @Expose
     var user = User(Name("", ""))
-        get() = field
-        set(value) {
-            field = value
-        }
+
+    var factNumber = ""
+    var createdAt = ""
 
     fun toStringArrayList(): ArrayList<String> {
         val array = ArrayList<String>()
@@ -72,26 +43,8 @@ class Fact {
         fact.user.name.last = array[6]
         return fact
     }
-}
 
-class User(name: Name) {
-    @SerializedName("name")
-    @Expose
-    var name = name
-        get() = field
-        set(value) { field = value }
-}
+    class User(@SerializedName("name") @Expose var name: Name)
 
-class Name(first: String, last: String) {
-    @SerializedName("first")
-    @Expose
-    var first = first
-        get() = field
-        set(value) { field = value }
-
-    @SerializedName("last")
-    @Expose
-    var last = last
-        get() = field
-        set(value) { field = value }
+    class Name(@SerializedName("first") @Expose var first: String, @SerializedName("last") @Expose var last: String)
 }
